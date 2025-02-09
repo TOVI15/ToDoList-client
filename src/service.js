@@ -42,7 +42,7 @@ const apiService = {
 
   setCompleted: async (id, isComplete) => {
     try {
-      const updatedTask = { isComplete };
+      const updatedTask =  isComplete;
       const result = await axios.put(`/items/${id}`, updatedTask);
       return result.data;  
     } catch (error) {
