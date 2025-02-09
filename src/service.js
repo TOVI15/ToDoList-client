@@ -42,14 +42,14 @@ const apiService = {
 
   setCompleted: async (id, isComplete) => {
     try {
+
       const updatedTask =  isComplete;
-      const result = await axios.put(`/items/${id}`, updatedTask);
+      const result = await axios.put(`/items/${id}`, { updatedItem: isComplete });
       return result.data;  
     } catch (error) {
       throw error;  
     }
   },
-
 
   deleteTask: async (id) => {
     try {
