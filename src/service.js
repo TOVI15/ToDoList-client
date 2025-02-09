@@ -23,31 +23,18 @@ const apiService = {
     }
   },
 
-
-    // addTask: async (name) => {
-    //   try {
-    //     const newTask = { name : name, isComplete: false }; 
-    //     console.log("Sending task to server:", newTask);  // Log the request data
-    //     const result = await axios.post('/items', newTask);
-    //     return result.data;  
-    //   } catch (error) {
-    //     // console.error("Error in addTask:", error.response ? error.response.data : error.message);
-    //     throw error;  
-    //   }
-    // },
-
-    addTask: async(name)=>{
-      await axios.post(`/items`,{name: name, isComplete: false});
-    },
+  addTask: async (name) => {
+    await axios.post(`/items`, { name: name, isComplete: false });
+  },
 
   setCompleted: async (id, isComplete) => {
     try {
 
-      const updatedTask =  isComplete;
-      const result = await axios.put(`/items/${id}`, { updatedItem: isComplete });
-      return result.data;  
+      const result = await axios.put(`/items/${id}`, {name: " ", isComplete: isComplete}); // לא בתוך אובייקט, ישירות
+      return result.data;
     } catch (error) {
-      throw error;  
+      console.error("API request error:", error.response ? error.response.data : error.message);
+      throw error;
     }
   },
 
@@ -60,4 +47,6 @@ const apiService = {
     }
   }
 };
-export default apiService
+
+
+export default apiService;
